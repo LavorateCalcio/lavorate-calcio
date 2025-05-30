@@ -14,9 +14,16 @@
           --bg-color: #f9f9f9;
           --section-bg: #fff;
           --card-bg: #f0f0f0;
+          --form-bg: #fff;
+          --form-border: #ddd;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text-color); background: var(--bg-color); line-height: 1.5; }
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: var(--text-color);
+          background: var(--bg-color);
+          line-height: 1.5;
+        }
         a { text-decoration: none; }
         .download-btn {
           position: fixed; top: 1rem; right: 1rem;
@@ -26,6 +33,15 @@
           z-index: 1000; transition: transform 0.2s, background 0.3s;
         }
         .download-btn:hover { background: var(--main-green-dark); transform: scale(1.05); }
+        .cta-btn, .mail-btn {
+          display: inline-block;
+          background: var(--main-green); color: #fff;
+          padding: 0.75rem 1.25rem; border-radius: 0.5rem;
+          font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+          transition: transform 0.2s, background 0.3s;
+          margin-top: 1rem;
+        }
+        .cta-btn:hover, .mail-btn:hover { background: var(--main-green-dark); transform: scale(1.05); }
         header {
           position: relative; text-align: center; background: var(--main-green);
           color: #fff; padding: 4rem 1rem;
@@ -36,62 +52,100 @@
           background: rgba(0,0,0,0.5);
         }
         header img.logo, header h1, header p.lead { position: relative; z-index:1; }
-        header img.logo { max-width:150px; animation: fadeInDown 1s ease-out; }
-        header h1 { margin-top:1rem; font-size:2rem; animation: fadeInUp 1s ease-out; }
-        header p.lead { margin-top:0.5rem; font-size:1rem; animation: fadeInUp 1.2s ease-out; }
-
+        header img.logo { max-width:150px; margin-bottom: 1rem; animation: fadeInDown 1s ease-out; }
+        header h1 { font-size:2rem; margin-bottom:0.5rem; animation: fadeInUp 1s ease-out; }
+        header p.lead { font-size:1rem; animation: fadeInUp 1.2s ease-out; }
         @keyframes fadeInUp { from {opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
         @keyframes fadeInDown { from {opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);} }
-
-        main { padding: 2rem 1rem; }
-        .section { background: var(--section-bg); margin-bottom:2rem; padding:2rem; border-radius:0.75rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-        .section-title { text-align:center; color:var(--main-green); font-size:1.5rem; margin-bottom:1rem; }
-
+        main {
+          padding: 2rem 1rem;
+          width: 100%;
+        }
+        .section {
+          background: var(--section-bg);
+          margin-bottom:2rem;
+          padding:2rem;
+          border-radius:0.75rem;
+          box-shadow:0 2px 8px rgba(0,0,0,0.1);
+          max-width: none;
+        }
+        .section-title {
+          text-align:center;
+          color:var(--main-green);
+          font-size:1.5rem;
+          margin-bottom:1rem;
+        }
         /* Carousel */
-        .swiper { width:100%; height: auto; }
+        .swiper { width:100%; padding-bottom:0.5rem; }
         .swiper-slide { display:flex; justify-content:center; }
-        .swiper-slide img { width: auto; max-width: 90%; height: auto; border-radius:0.5rem; }
-
+        .swiper-slide img {
+          width: 100%; height: auto;
+          border-radius: 1rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .swipe-hint {
+          text-align:center;
+          font-size:0.9rem;
+          color:var(--text-color);
+          margin-top:0.5rem;
+        }
         /* Sponsorship cards */
-        .cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem; }
-        .card { background: var(--card-bg); padding:1.5rem; border-radius:0.5rem; text-align:center; box-shadow: 0 1px 4px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .cards {
+          display:grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+        }
+        .card {
+          background: var(--card-bg);
+          padding:1.5rem;
+          border-radius:0.5rem;
+          text-align:center;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+          transition: transform 0.3s;
+        }
         .card:hover { transform: translateY(-5px); }
         .card-icon { font-size:2rem; margin-bottom:0.5rem; color:var(--main-green); }
         .card-title { font-weight:bold; margin-bottom:0.5rem; }
-
-        @media (max-width:768px) {
-          .download-btn { bottom:1rem; top:auto; }
+        /* Contact Form Styling */
+        .contact-section {
+          background: var(--form-bg);
+          border:1px solid var(--form-border);
+          padding:2rem;
+          border-radius:0.75rem;
+        }
+        .contact-form {
+          display:flex; flex-direction:column; gap:1rem;
+          max-width:500px; margin:auto;
+        }
+        .contact-form input, .contact-form textarea {
+          width:100%; padding:0.75rem;
+          border:1px solid var(--form-border);
+          border-radius:0.25rem;
+          font-size:1rem; font-family:inherit;
+        }
+        .contact-form textarea { resize: vertical; min-height:120px; }
+        @media (max-width:600px) {
           header h1 { font-size:1.5rem; }
           header p.lead { font-size:0.9rem; }
+          .download-btn { top:auto; bottom:1rem; }
         }
     </style>
 </head>
 <body>
-<a class="download-btn" href="brochure.pdf" download>Scarica Brochure</a>
+<a class="download-btn" href="brochure.pdf" download="brochure.pdf">Scarica Brochure Completa</a>
 <header>
     <img src="logo.png" alt="Logo ASD Lavorate Calcio" class="logo">
     <h1>Brochure Sponsorizzazione 2025–2026</h1>
-    <p class="lead">Scopri come il tuo brand può crescere con noi.</p>
+    <p class="lead">Scorri le pagine e scopri le opportunità.</p>
 </header>
 <main>
-    <!-- Carousel Sezioni Brochure -->
     <div class="section">
         <h2 class="section-title">Sfoglia la Brochure</h2>
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <!-- Inserisci qui le slide: -->
-                <div class="swiper-slide"><img src="page-1.png" alt="Pagina 1"></div>
-                <div class="swiper-slide"><img src="page-2.png" alt="Pagina 2"></div>
-                <div class="swiper-slide"><img src="page-3.png" alt="Pagina 3"></div>
-                <!-- Continua per tutte le pagine -->
-            </div>
-            <!-- Controlli -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-pagination"></div>
+        <div class="swiper"><div class="swiper-wrapper"></div>
+            <div class="swiper-button-prev"></div><div class="swiper-button-next"></div><div class="swiper-pagination"></div>
         </div>
+        <p class="swipe-hint">Usa le frecce per navigare tra tutte le pagine →</p>
     </div>
-    <!-- Sezione Perché Sponsorizzare -->
     <div class="section">
         <h2 class="section-title">Perché Sponsorizzare?</h2>
         <div class="cards">
@@ -101,21 +155,43 @@
             <div class="card"><div class="card-icon">🤝</div><div class="card-title">Partnership Locali</div><p>Collaborazioni con aziende del territorio</p></div>
         </div>
     </div>
-    <!-- CTA Finale -->
-    <div class="section" style="text-align:center;">
+    <div class="section">
         <h2 class="section-title">Pronto a Iniziare?</h2>
         <p>Scarica la brochure completa e contattaci per un incontro dedicato.</p>
-        <a class="download-btn" href="brochure.pdf" download>Scarica Brochure Completa</a>
+        <div style="text-align:center; margin-top:1rem;">
+            <a class="cta-btn" href="brochure.pdf" download="brochure.pdf">Scarica Brochure Completa</a>
+        </div>
+    </div>
+    <div class="section contact-section">
+        <h2 class="section-title">Contattaci</h2>
+        <form class="contact-form" action="https://formspree.io/f/mnqvwpkz" method="POST">
+            <input type="hidden" name="_subject" value="Richiesta Sponsorizzazione ASD Lavorate Calcio">
+            <input type="hidden" name="_captcha" value="false">
+            <input name="name" type="text" placeholder="Il tuo nome" required>
+            <input name="email" type="email" placeholder="La tua email" required>
+            <textarea name="message" placeholder="Il tuo messaggio" required></textarea>
+            <button type="submit" class="mail-btn">Invia Messaggio</button>
+        </form>
     </div>
 </main>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
-    const swiper = new Swiper('.swiper', {
-      loop: false,
+    const wrapper = document.querySelector('.swiper-wrapper');
+    for (let i = 1; i <= 18; i++) {
+      const slide = document.createElement('div'); slide.classList.add('swiper-slide');
+      const img = document.createElement('img'); img.src = `page-${i}.png`; img.alt = `Pagina ${i}`;
+      slide.appendChild(img); wrapper.appendChild(slide);
+    }
+    new Swiper('.swiper', {
+      slidesPerView: 3, spaceBetween: 10, slidesPerGroup: 3, loop: false,
       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
       pagination: { el: '.swiper-pagination', clickable: true },
-      spaceBetween: 20
+      breakpoints: {
+        0:{slidesPerView:1,slidesPerGroup:1,spaceBetween:5},
+        576:{slidesPerView:2,slidesPerGroup:2,spaceBetween:8},
+        992:{slidesPerView:3,slidesPerGroup:3,spaceBetween:10}
+      }
     });
 </script>
 </body>
