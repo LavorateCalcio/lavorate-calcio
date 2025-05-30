@@ -5,19 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brochure Sponsorizzazione – ASD Lavorate Calcio</title>
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 1rem; }
-        .btn { display: inline-block; margin: 1rem 0; padding: .5rem 1rem; border-radius: 4px; background: #0066cc; color: #fff; text-decoration: none; }
-        embed { width: 100%; height: 90vh; border: 1px solid #ccc; }
+        /* Variabili per colori */
+        :root {
+          --main-green: #2E8B57; /* Colore principale dal logo */
+          --main-green-dark: #256e47; /* Tonalità più scura per hover */
+          --text-color: #333;
+          --bg-color: #f9f9f9;
+          --section-bg: #fff;
+        }
+        /* Reset basilare */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: var(--text-color);
+          background: var(--bg-color);
+          line-height: 1.5;
+        }
+        a { text-decoration: none; }
+
+        /* Pulsante di download sticky */
+        .download-btn {
+          position: fixed;
+          top: 1rem;
+          right: 1rem;
+          background: var(--main-green);
+          color: #fff;
+          padding: 0.75rem 1.25rem;
+          border-radius: 0.5rem;
+          font-weight: bold;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+          z-index: 1000;
+          transition: transform 0.2s, background 0.3s;
+        }
+        .download-btn:hover {
+          background: var(--main-green-dark);
+          transform: scale(1.05);
+        }
+
+        header {
+          background: var(--main-green);
+          color: #fff;
+          text-align: center;
+          padding: 4rem 1rem;
+          background-image: url('hero-bg.jpg');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          overflow: hidden;
+        }
+        header::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0, 0, 0, 0.5);
+        }
+        header img.logo {
+          max-width: 150px;
+          position: relative;
+          z-index: 1;
+          animation: fadeInDown 1s ease-out;
+        }
+        header h1 {
+          margin-top: 1rem;
+          font-size: 2.25rem;
+          position: relative;
+          z-index: 1;
+          animation: fadeInUp 1s ease-out;
+        }
+        header p.lead {
+          margin-top: 0.5rem;
+          font-size: 1.125rem;
+          position: relative;
+          z-index: 1;
+          animation: fadeInUp 1.2s ease-out;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        main {
+          display: flex;
+          flex-direction: column;
+        }
+        section {
+          background: var(--section-bg);
+          margin: 2rem 1rem;
+          padding: 2rem;
+          border-radius: 0.75rem;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .section-title {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--main-green);
+          text-align: center;
+        }
+        .preview-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+        }
+        .page-img {
+          width: 100%;
+          border-radius: 0.5rem;
+          transition: transform 0.3s;
+          cursor: pointer;
+        }
+        .page-img:hover {
+          transform: scale(1.03);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+          header h1 { font-size: 1.75rem; }
+          header p.lead { font-size: 1rem; }
+          .download-btn { top: auto; bottom: 1rem; right: 1rem; }
+          .preview-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-<h1>ASD Lavorate Calcio 2013</h1>
-<div style="text-align:center; margin:20px 0;">
-    <img src="logo.png" alt="Logo ASD Lavorate Calcio" style="max-width:200px;">
-</div>
-<p>Benvenuto! Qui puoi scaricare o visualizzare la nostra brochure di sponsorizzazione per la stagione 2025–2026.</p>
-<a class="btn" href="brochure.pdf" download>Scarica la Brochure Completa (230 MB)</a>
-<h2>Anteprima</h2>
-<embed src="brochure.pdf#page=1&view=fitH" type="application/pdf">
+<!-- Pulsante di download sticky -->
+<a class="download-btn" href="brochure.pdf" download>Scarica Brochure</a>
+
+<!-- Hero Section -->
+<header>
+    <img src="logo.png" alt="Logo ASD Lavorate Calcio" class="logo">
+    <h1>Brochure Sponsorizzazione 2025–2026</h1>
+    <p class="lead">Scopri come il tuo brand può crescere con noi.</p>
+</header>
+
+<!-- Anteprima Sezioni -->
+<main>
+    <!-- Preview modulare -->
+    <section class="fade-in">
+        <h2 class="section-title">Anteprima della Brochure</h2>
+        <div class="preview-grid">
+            <img src="page-1.png" alt="Pagina 1" class="page-img fade-in">
+            <img src="page-2.png" alt="Pagina 2" class="page-img fade-in">
+            <img src="page-3.png" alt="Pagina 3" class="page-img fade-in">
+            <img src="page-4.png" alt="Pagina 4" class="page-img fade-in">
+        </div>
+    </section>
+
+    <!-- Sezione dettagli -->
+    <section class="fade-in">
+        <h2 class="section-title">Perché sponsorizzarci?</h2>
+        <p>Unisciti a noi per aumentare la visibilità del tuo brand sul territorio di Sarno e dintorni. La nostra community conta:</p>
+        <ul>
+            <li>+1.625 follower su Instagram</li>
+            <li>Quasi 1 milione di visualizzazioni su TikTok</li>
+            <li>+2.285 follower su Facebook</li>
+        </ul>
+    </section>
+
+    <!-- Sezione call-to-action -->
+    <section class="fade-in">
+        <h2 class="section-title">Pronto a partire?</h2>
+        <p>Scarica la brochure completa e contattaci per un incontro dedicato.</p>
+        <div style="text-align:center; margin-top:1rem;">
+            <a class="download-btn" href="brochure.pdf" download>Scarica Brochure Completa</a>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Animazione fade-in on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const faders = document.querySelectorAll('.fade-in');
+      const options = { threshold: 0.2 };
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, options);
+      faders.forEach(fader => observer.observe(fader));
+    });
+</script>
 </body>
 </html>
