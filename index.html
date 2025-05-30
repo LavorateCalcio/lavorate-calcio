@@ -6,6 +6,8 @@
     <title>Marketing Proposal – ASD Lavorate Calcio</title>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         :root {
           --main-green: #2E8B57;
@@ -52,11 +54,9 @@
           background: rgba(0,0,0,0.5);
         }
         header img.logo, header h1, header p.lead { position: relative; z-index:1; }
-        header img.logo { max-width:150px; margin-bottom: 1rem; animation: fadeInDown 1s ease-out; }
-        header h1 { font-size:2rem; margin-bottom:0.5rem; animation: fadeInUp 1s ease-out; }
-        header p.lead { font-size:1rem; animation: fadeInUp 1.2s ease-out; }
-        @keyframes fadeInUp { from {opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
-        @keyframes fadeInDown { from {opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);} }
+        header img.logo { max-width:150px; margin-bottom: 1rem; }
+        header h1 { font-size:2rem; margin-bottom:0.5rem; }
+        header p.lead { font-size:1rem; }
         main {
           padding: 2rem 1rem;
           width: 100%;
@@ -125,6 +125,21 @@
           font-size:1rem; font-family:inherit;
         }
         .contact-form textarea { resize: vertical; min-height:120px; }
+        /* Footer */
+        footer {
+          background: var(--main-green-dark);
+          color: #fff;
+          text-align: center;
+          padding: 2rem 1rem;
+          margin-top: 2rem;
+        }
+        .social-links a {
+          color: #fff;
+          margin: 0 0.5rem;
+          font-size: 1.5rem;
+          transition: color 0.2s;
+        }
+        .social-links a:hover { color: var(--main-green); }
         @media (max-width:600px) {
           header h1 { font-size:1.5rem; }
           header p.lead { font-size:0.9rem; }
@@ -176,6 +191,16 @@
         </form>
     </div>
 </main>
+<!-- Footer -->
+<footer>
+    <div class="social-links">
+        <a href="https://www.instagram.com/asdlavoratecalcio/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@lavoratecalcio" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/channel/UC-Prf4xBKU1fxwMhvLaQqtg" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/LavorateCalcioASD" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    <p>&copy; 2025 ASD Lavorate Calcio</p>
+</footer>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
