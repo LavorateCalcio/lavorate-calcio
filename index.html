@@ -120,23 +120,23 @@
         }
 
         /* Carousel principale */
-        .swiper {
+        .main-swiper {
           width: 100%;
           padding-bottom: 0.5rem;
         }
-        .swiper-slide {
+        .main-swiper .swiper-slide {
           display: flex;
           justify-content: center;
           cursor: pointer;
         }
-        .swiper-slide img {
+        .main-swiper .swiper-slide img {
           width: 100%;
           height: auto;
           border-radius: 1rem;
           box-shadow: 0 4px 12px rgba(0,0,0,0.1);
           transition: transform 0.3s; /* hover solo qui */
         }
-        .swiper-slide img:hover {
+        .main-swiper .swiper-slide img:hover {
           transform: scale(1.02);
         }
 
@@ -146,17 +146,17 @@
           color: var(--text-color);
           margin-top: 0.5rem;
         }
-        /* Frecce personalizzate per swiper */
-        .swiper-button-next,
-        .swiper-button-prev {
+        /* Frecce personalizzate per main-swiper */
+        .main-swiper .swiper-button-next,
+        .main-swiper .swiper-button-prev {
           width: 40px;
           height: 40px;
           background: #fff;
           border-radius: 50%;
           box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
-        .swiper-button-next::after,
-        .swiper-button-prev::after {
+        .main-swiper .swiper-button-next::after,
+        .main-swiper .swiper-button-prev::after {
           color: var(--main-green);
           font-size: 1.2rem;
           font-weight: bold;
@@ -236,7 +236,7 @@
           color: var(--main-green);
         }
 
-        /* Modal Lightbox (solo immagine ingrandita) */
+        /* Modal Lightbox con Swiper interno */
         .modal {
           display: none;
           position: fixed;
@@ -252,11 +252,12 @@
         }
         .modal-content {
           position: relative;
-          /* Si adatta fino al 90% del viewport, ma non oltre 1173x660 */
+          /* Adattamento fino al 90% del viewport, ma non oltre 1173×660 */
           max-width: min(90vw, 1173px);
           max-height: min(90vh, 660px);
           border-radius: 0.75rem;
           overflow: hidden;
+          background: #000; /* sfondo nero dietro swiper */
         }
         .modal-close {
           position: absolute;
@@ -268,11 +269,34 @@
           color: #fff;
           z-index: 10;
         }
-        .modal-content img {
+        .modal-swiper {
           width: 100%;
           height: 100%;
-          object-fit: contain; /* riempie senza tagliare */
+        }
+        .modal-swiper .swiper-slide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .modal-swiper .swiper-slide img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain; /* non taglia, riempie entro il contenitore */
           display: block;
+        }
+        .modal-swiper .swiper-button-next,
+        .modal-swiper .swiper-button-prev {
+          width: 50px;
+          height: 50px;
+          background: #fff;
+          border-radius: 50%;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .modal-swiper .swiper-button-next::after,
+        .modal-swiper .swiper-button-prev::after {
+          color: var(--main-green);
+          font-size: 1.5rem;
+          font-weight: bold;
         }
 
         @media (max-width:600px) {
@@ -305,7 +329,7 @@
 <main>
     <div class="section">
         <h2 class="section-title">Sfoglia la Brochure</h2>
-        <div class="swiper">
+        <div class="swiper main-swiper">
             <div class="swiper-wrapper"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
@@ -365,11 +389,16 @@
     </div>
 </main>
 
-<!-- Modal Lightbox -->
+<!-- Modal Lightbox con Swiper interno -->
 <div class="modal" id="modal">
     <div class="modal-content" id="modalContent">
         <button class="modal-close" id="modalClose">&times;</button>
-        <img id="modalImage" src="" alt="Pagina ingrandita">
+        <div class="swiper modal-swiper">
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
 </div>
 
@@ -387,8 +416,8 @@
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
-    const wrapper = document.querySelector('.swiper-wrapper');
-    // Popolo carousel principale
+    // 1) Popolo il carosello principale (main-swiper)
+    const mainWrapper = document.querySelector('.main-swiper .swiper-wrapper');
     for (let i = 1; i <= 18; i++) {
       const slide = document.createElement('div');
       slide.classList.add('swiper-slide');
@@ -396,32 +425,74 @@
       img.src = `page-${i}.png`;
       img.alt = `Pagina ${i}`;
       slide.appendChild(img);
-      wrapper.appendChild(slide);
+      mainWrapper.appendChild(slide);
 
+      // All'apertura del modal, richiamo quell'indice
       slide.addEventListener('click', () => {
-        document.getElementById('modalImage').src = img.src;
-        document.getElementById('modal').classList.add('open');
+        openModal(i - 1);
       });
     }
-    const mainSwiper = new Swiper('.swiper', {
+
+    // Inizializzo lo Swiper principale
+    const mainSwiper = new Swiper('.main-swiper', {
       slidesPerView: 3,
       spaceBetween: 10,
       slidesPerGroup: 3,
       loop: false,
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: {
+        nextEl: '.main-swiper .swiper-button-next',
+        prevEl: '.main-swiper .swiper-button-prev'
+      },
+      pagination: {
+        el: '.main-swiper .swiper-pagination',
+        clickable: true
+      },
       breakpoints: {
-        0:   { slidesPerView:1, slidesPerGroup:1, spaceBetween:5 },
-        576: { slidesPerView:2, slidesPerGroup:2, spaceBetween:8 },
-        992: { slidesPerView:3, slidesPerGroup:3, spaceBetween:10 }
+        0:   { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 5 },
+        576: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 8 },
+        992: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 10 }
       }
     });
 
-    // Modal functionality
+    // 2) Popolo lo Swiper interno (modal-swiper) con le 18 stesse immagini
+    const modalWrapper = document.querySelector('.modal-swiper .swiper-wrapper');
+    for (let i = 1; i <= 18; i++) {
+      const mSlide = document.createElement('div');
+      mSlide.classList.add('swiper-slide');
+      const mImg = document.createElement('img');
+      mImg.src = `page-${i}.png`;
+      mImg.alt = `Pagina ${i}`;
+      mSlide.appendChild(mImg);
+      modalWrapper.appendChild(mSlide);
+    }
+
+    // Inizializzo lo Swiper interno (lightbox)
+    const modalSwiper = new Swiper('.modal-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.modal-swiper .swiper-button-next',
+        prevEl: '.modal-swiper .swiper-button-prev'
+      },
+      pagination: {
+        el: '.modal-swiper .swiper-pagination',
+        clickable: true
+      }
+    });
+
+    // 3) Funzione che apre il modal e porta lo Swiper interno sull'indice corretto
+    function openModal(index) {
+      document.getElementById('modal').classList.add('open');
+      modalSwiper.slideTo(index, 0);
+    }
+
+    // 4) Chiusura del modal al click sulla X o fuori dal contenuto
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modalClose');
     const modalContent = document.getElementById('modalContent');
-    modalClose.addEventListener('click', () => modal.classList.remove('open'));
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('open');
+    });
     modal.addEventListener('click', (e) => {
       if (!modalContent.contains(e.target)) {
         modal.classList.remove('open');
