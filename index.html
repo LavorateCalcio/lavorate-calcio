@@ -3,444 +3,282 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Marketing Proposal – ASD Lavorate Calcio</title>
-    <!-- Swiper CSS -->
+    <title>Preordine – Maglia Home 25/26 | ASD Lavorate Calcio</title>
+    <meta name="description" content="Preordina la Maglia Home 2025/26 dell'ASD Lavorate Calcio. Compila il modulo e conferma in sede con €15 di acconto. Ritiro al campo."/>
+
+    <!-- Swiper CSS (galleria) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <!-- Font Awesome per icone social -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Font Awesome (icone social) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
     <style>
-        :root {
-          --main-green: #2E8B57;
-          --main-green-dark: #256e47;
-          --text-color: #333;
-          --bg-color: #f9f9f9;
-          --section-bg: #fff;
-          --card-bg: #f0f0f0;
-          --form-bg: #fff;
-          --form-border: #ddd;
+        :root{
+          --main-green:#2E8B57;
+          --main-green-dark:#256e47;
+          --text-color:#333;
+          --bg-color:#f9f9f9;
+          --section-bg:#fff;
+          --card-bg:#f0f0f0;
+          --form-bg:#fff;
+          --form-border:#ddd;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          color: var(--text-color);
-          background: var(--bg-color);
-          line-height: 1.5;
-        }
-        a { text-decoration: none; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:var(--text-color);background:var(--bg-color);line-height:1.5}
+        a{text-decoration:none;color:inherit}
 
-        /* Pulsante scarica fisso */
-        .download-btn {
-          position: fixed;
-          top: 1rem;
-          right: 1rem;
-          background: var(--main-green);
-          color: #fff;
-          padding: 0.75rem 1.25rem;
-          border-radius: 0.5rem;
-          font-weight: bold;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-          z-index: 1000;
-          transition: transform 0.2s, background 0.3s;
-        }
-        .download-btn:hover {
-          background: var(--main-green-dark);
-          transform: scale(1.05);
-        }
+        /* Top bar informativa */
+        .topbar{position:sticky;top:0;z-index:1100;background:#111;color:#fff;text-align:center;padding:.5rem .75rem;font-size:.95rem}
+        .topbar strong{color:#fff}
 
-        /* CTA e submit form */
-        .cta-btn, .mail-btn {
-          display: inline-block;
-          background: var(--main-green);
-          color: #fff;
-          padding: 0.75rem 1.25rem;
-          border-radius: 0.5rem;
-          font-weight: bold;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-          transition: transform 0.2s, background 0.3s;
-          margin-top: 1rem;
-        }
-        .cta-btn:hover, .mail-btn:hover {
-          background: var(--main-green-dark);
-          transform: scale(1.05);
-        }
+        /* Header / Hero */
+        header{position:relative;text-align:center;color:#fff;background:var(--main-green);background-image:url('kit-hero.jpg');background-size:cover;background-position:center;min-height:420px;display:flex;align-items:center;justify-content:center}
+        header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+        header .inner{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:2rem 1rem}
+        header img.logo{max-width:140px;display:block;margin:0 auto 1rem}
+        header h1{font-size:2.2rem;margin-bottom:.5rem}
+        header p.lead{font-size:1.05rem;opacity:.95}
+        .cta-primary{display:inline-block;margin-top:1rem;background:#fff;color:#000;padding:.8rem 1.2rem;border-radius:.5rem;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:transform .2s,opacity .2s}
+        .cta-primary:hover{transform:translateY(-1px);opacity:.95}
 
-        header {
-          position: relative;
-          text-align: center;
-          background: var(--main-green);
-          color: #fff;
-          padding: 4rem 1rem;
-          background-image: url('hero-bg.jpg');
-          background-size: cover;
-          background-position: center;
-        }
-        header::after {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: rgba(0,0,0,0.5);
-        }
-        header img.logo,
-        header h1,
-        header p.lead {
-          position: relative;
-          z-index: 1;
-        }
-        header img.logo {
-          max-width: 150px;
-          margin-bottom: 1rem;
-        }
-        header h1 {
-          font-size: 2rem;
-          margin-bottom: 0.5rem;
-        }
-        header p.lead {
-          font-size: 1rem;
-        }
+        /* Layout sezioni */
+        main{padding:2rem 1rem;width:100%;max-width:1200px;margin:0 auto}
+        .section{background:var(--section-bg);margin-bottom:2rem;padding:2rem;border-radius:.75rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        .section-title{text-align:center;color:var(--main-green);font-size:1.6rem;margin-bottom:1rem}
+        .section p.center{text-align:center}
 
-        main {
-          padding: 2rem 1rem;
-          width: 100%;
-        }
-        .section {
-          background: var(--section-bg);
-          margin-bottom: 2rem;
-          padding: 2rem;
-          border-radius: 0.75rem;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .section-title {
-          text-align: center;
-          color: var(--main-green);
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-        }
-        .section p {
-          text-align: center;
-        }
+        /* Galleria */
+        .main-swiper{width:100%;padding-bottom:.5rem}
+        .main-swiper .swiper-slide{display:flex;justify-content:center;cursor:pointer}
+        .main-swiper .swiper-slide img{width:100%;height:auto;border-radius:1rem;box-shadow:0 4px 12px rgba(0,0,0,.1);transition:transform .25s}
+        .main-swiper .swiper-slide img:hover{transform:scale(1.02)}
+        .main-swiper .swiper-button-next,.main-swiper .swiper-button-prev{width:40px;height:40px;background:#fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+        .main-swiper .swiper-button-next::after,.main-swiper .swiper-button-prev::after{color:var(--main-green);font-size:1.2rem;font-weight:bold}
+        .swipe-hint{text-align:center;font-size:.9rem;color:#555;margin-top:.5rem}
 
-        /* Carousel principale */
-        .main-swiper {
-          width: 100%;
-          padding-bottom: 0.5rem;
-        }
-        .main-swiper .swiper-slide {
-          display: flex;
-          justify-content: center;
-          cursor: pointer;
-        }
-        .main-swiper .swiper-slide img {
-          width: 100%;
-          height: auto;
-          border-radius: 1rem;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          transition: transform 0.3s; /* hover solo qui */
-        }
-        .main-swiper .swiper-slide img:hover {
-          transform: scale(1.02);
-        }
+        /* Cards info */
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+        .card{background:var(--card-bg);padding:1.25rem;border-radius:.5rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08);transition:transform .25s}
+        .card:hover{transform:translateY(-3px)}
+        .card .icon{font-size:1.6rem;margin-bottom:.5rem;color:var(--main-green)}
+        .card .title{font-weight:700;margin-bottom:.25rem}
 
-        .swipe-hint {
-          text-align: center;
-          font-size: 0.9rem;
-          color: var(--text-color);
-          margin-top: 0.5rem;
-        }
-        /* Frecce personalizzate per main-swiper */
-        .main-swiper .swiper-button-next,
-        .main-swiper .swiper-button-prev {
-          width: 40px;
-          height: 40px;
-          background: #fff;
-          border-radius: 50%;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-        .main-swiper .swiper-button-next::after,
-        .main-swiper .swiper-button-prev::after {
-          color: var(--main-green);
-          font-size: 1.2rem;
-          font-weight: bold;
-        }
+        /* How it works */
+        .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:.5rem}
+        .step{background:var(--card-bg);padding:1.25rem;border-radius:.5rem;text-align:center}
+        .step .num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--main-green);color:#fff;font-weight:700;margin-bottom:.5rem}
 
-        /* Sponsorship cards */
-        .cards {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1rem;
-        }
-        .card {
-          background: var(--card-bg);
-          padding: 1.5rem;
-          border-radius: 0.5rem;
-          text-align: center;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-          transition: transform 0.3s;
-        }
-        .card:hover {
-          transform: translateY(-5px);
-        }
-        .card-icon {
-          font-size: 2rem;
-          margin-bottom: 0.5rem;
-          color: var(--main-green);
-        }
-        .card-title {
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-        }
+        /* Guida taglie */
+        .size-guide{display:grid;grid-template-columns:1fr;gap:1rem;align-items:center}
+        .size-guide img{width:100%;height:auto;border-radius:.5rem;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+        .size-table{background:#fafafa;border:1px solid #eee;border-radius:.5rem;padding:1rem}
+        .size-table table{width:100%;border-collapse:collapse;font-size:.95rem}
+        .size-table th,.size-table td{padding:.4rem .5rem;border-bottom:1px solid #eee;text-align:left}
+        .size-table th{color:#222}
 
-        /* Contact Form Styling */
-        .contact-section {
-          background: var(--form-bg);
-          border: 1px solid var(--form-border);
-          padding: 2rem;
-          border-radius: 0.75rem;
-          width: 100%;
-        }
-        .contact-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          max-width: 500px;
-          margin: auto;
-        }
-        .contact-form input,
-        .contact-form textarea {
-          width: 100%;
-          padding: 0.75rem;
-          border: 1px solid var(--form-border);
-          border-radius: 0.25rem;
-          font-size: 1rem;
-          font-family: inherit;
-        }
-        .contact-form textarea {
-          resize: vertical;
-          min-height: 120px;
-        }
+        /* Form */
+        .contact-section{background:var(--form-bg);border:1px solid var(--form-border);padding:2rem;border-radius:.75rem;width:100%}
+        .contact-form{display:flex;flex-direction:column;gap:1rem;max-width:560px;margin:0 auto}
+        .contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:.75rem;border:1px solid var(--form-border);border-radius:.25rem;font-size:1rem;font-family:inherit}
+        .contact-form textarea{resize:vertical;min-height:110px}
+        .mail-btn{display:inline-block;background:var(--main-green);color:#fff;padding:.8rem 1.2rem;border-radius:.5rem;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:transform .2s,background .3s;margin-top:.25rem}
+        .mail-btn:hover{background:var(--main-green-dark);transform:translateY(-1px)}
+        .small-note{text-align:center;font-size:.9rem;color:#555;margin-top:.5rem}
+
+        /* Modal lightbox */
+        .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(5px);justify-content:center;align-items:center;z-index:2000}
+        .modal.open{display:flex}
+        .modal-content { position: relative; width: min(90vw, 1173px); height: min(90vh, 660px); border-radius: 0.75rem; overflow: hidden; background: #000; }
+        .modal-close{position:absolute;top:10px;right:16px;font-size:2rem;background:none;border:none;color:#fff;cursor:pointer;z-index:5}
+        .modal-swiper { width: 100%; height: 100%; }
+        .modal-swiper .swiper-slide { display: flex; align-items: center; justify-content: center; height: 100%; }
+        .modal-swiper .swiper-slide img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+        .modal-swiper .swiper-button-next,.modal-swiper .swiper-button-prev{width:30px;height:30px;background:rgba(255,255,255,.65);border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.3);opacity:.75;transition:opacity .2s}
+        .modal-swiper .swiper-button-next:hover,.modal-swiper .swiper-button-prev:hover{opacity:1}
+        .modal-swiper .swiper-button-next::after,.modal-swiper .swiper-button-prev::after{color:var(--main-green);font-size:1.2rem;font-weight:bold}
 
         /* Footer */
-        footer {
-          background: var(--main-green-dark);
-          color: #fff;
-          text-align: center;
-          padding: 2rem 1rem;
-          margin-top: 2rem;
-        }
-        .social-links a {
-          color: #fff;
-          margin: 0 0.5rem;
-          font-size: 1.5rem;
-          transition: color 0.2s;
-        }
-        .social-links a:hover {
-          color: var(--main-green);
-        }
+        footer{background:var(--main-green-dark);color:#fff;text-align:center;padding:2rem 1rem;margin-top:2rem}
+        .social-links a{color:#fff;margin:0 .5rem;font-size:1.5rem;transition:opacity .2s}
+        .social-links a:hover{opacity:.85}
 
-        /* Modal Lightbox con Swiper interno */
-        .modal {
-          display: none;
-          position: fixed;
-          top: 0; left: 0; width: 100%; height: 100%;
-          background: rgba(0,0,0,0.8);
-          backdrop-filter: blur(5px);
-          justify-content: center;
-          align-items: center;
-          z-index: 2000;
-        }
-        .modal.open {
-          display: flex;
-        }
-        .modal-content {
-          position: relative;
-          /* Adattamento fino al 90% del viewport, ma non oltre 1173×660 */
-          max-width: min(90vw, 1173px);
-          max-height: min(90vh, 660px);
-          border-radius: 0.75rem;
-          overflow: hidden;
-          background: #000; /* sfondo nero dietro swiper */
-        }
-        .modal-close {
-          position: absolute;
-          top: 15px; right: 20px;
-          font-size: 2rem;
-          background: none;
-          border: none;
-          cursor: pointer;
-          color: #fff;
-          z-index: 10;
-        }
-        .modal-swiper {
-          width: 100%;
-          height: 100%;
-        }
-        .modal-swiper .swiper-slide {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .modal-swiper .swiper-slide img {
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain; /* non taglia, riempie entro il contenitore */
-          display: block;
-        }
-        /* Frecce meno visibili nel lightbox */
-        .modal-swiper .swiper-button-next,
-        .modal-swiper .swiper-button-prev {
-          width: 30px;
-          height: 30px;
-          background: rgba(255,255,255,0.6);
-          border-radius: 50%;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-          opacity: 0.7;
-          transition: opacity 0.2s;
-        }
-        .modal-swiper .swiper-button-next:hover,
-        .modal-swiper .swiper-button-prev:hover {
-          opacity: 1;
-        }
-        .modal-swiper .swiper-button-next::after,
-        .modal-swiper .swiper-button-prev::after {
-          color: var(--main-green);
-          font-size: 1.2rem;
-          font-weight: bold;
-        }
-
-        @media (max-width:600px) {
-          header h1 {
-            font-size: 1.5rem;
-          }
-          header p.lead {
-            font-size: 0.9rem;
-          }
-          .download-btn {
-            display: none; /* nascondi su mobile */
-          }
+        /* Responsive */
+        @media (max-width:900px){.size-guide{grid-template-columns:1fr}}
+        @media (max-width:600px){
+          header{min-height:360px}
+          header h1{font-size:1.7rem}
+          header p.lead{font-size:.95rem}
         }
     </style>
 </head>
-
 <body>
-<a class="download-btn"
-   href="https://github.com/LavorateCalcio/lavorate-calcio/releases/download/v1.0/LC_MARKETING_PROPOSAL_25-26.pdf"
-   download="LC_MARKETING_PROPOSAL_25-26.pdf">
-    Scarica Brochure Completa
-</a>
+<!-- Topbar info -->
+<div class="topbar">Nessun pagamento online — <strong>conferma in sede con €15</strong>. 1 richiesta = 1 maglia. Ritiro al campo.</div>
 
+<!-- HERO -->
 <header>
-    <img src="logo.png" alt="Logo ASD Lavorate Calcio" class="logo">
-    <h1>Marketing Proposal 2025–2026</h1>
-    <p class="lead">Scorri le pagine e scopri le opportunità.</p>
+    <div class="inner">
+        <img src="logo.png" alt="Logo ASD Lavorate Calcio" class="logo" loading="lazy">
+        <h1>Home Shirt 25/26</h1>
+        <p class="lead">Compila il modulo, ricevi il codice e <strong>conferma con €15</strong> in sede entro 7 giorni.</p>
+        <a href="#preordine" class="cta-primary">Invia Pre-Order</a>
+    </div>
 </header>
 
 <main>
-    <div class="section">
-        <h2 class="section-title">Sfoglia la Brochure</h2>
+    <!-- GALLERIA -->
+    <section class="section" aria-labelledby="galleria-title">
+        <h2 id="galleria-title" class="section-title">Galleria kit</h2>
         <div class="swiper main-swiper">
             <div class="swiper-wrapper"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev" aria-label="Indietro"></div>
+            <div class="swiper-button-next" aria-label="Avanti"></div>
             <div class="swiper-pagination"></div>
         </div>
-        <p class="swipe-hint">Usa le frecce per navigare tra tutte le pagine →</p>
-    </div>
+        <p class="swipe-hint">Clicca sulle immagini per vederle a schermo intero →</p>
+    </section>
 
-    <div class="section">
-        <h2 class="section-title">Perché Sponsorizzare?</h2>
+    <!-- INFO CARDS -->
+    <section class="section">
+        <h2 class="section-title">Informazioni chiave</h2>
         <div class="cards">
-            <div class="card">
-                <div class="card-icon">👥</div>
-                <div class="card-title">Community Attiva</div>
-                <p>3.500+ follower sui social</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">⚽</div>
-                <div class="card-title">Visibilità Eventi</div>
-                <p>10+ partite live & media coverage</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">📈</div>
-                <div class="card-title">Crescita Costante</div>
-                <p>+20% engagement anno su anno</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🤝</div>
-                <div class="card-title">Partnership Locali</div>
-                <p>Collaborazioni con aziende del territorio</p>
+            <div class="card"><div class="icon">💶</div><div class="title">Prezzo & Acconto</div><p>Acconto in sede <strong>€15</strong>. Saldo alla consegna. Prezzo: <strong>[€PREZZO]</strong>.</p></div>
+            <div class="card"><div class="icon">📅</div><div class="title">Tempistiche</div><p>Pre-adesioni fino al <strong>[DATA]</strong>. Consegna stimata: <strong>[MESE]</strong>.</p></div>
+            <div class="card"><div class="icon">📍</div><div class="title">Ritiro</div><p>Campo: <strong>[INDIRIZZO CAMPO]</strong><br>Referente: <strong>[NOME] [TEL]</strong></p></div>
+            <div class="card"><div class="icon">✅</div><div class="title">Trasparenza</div><p>Nessun pagamento online. Se la produzione non parte, acconto rimborsato.</p></div>
+        </div>
+    </section>
+
+    <!-- GUIDA TAGLIE -->
+    <section class="section">
+        <h2 class="section-title">Guida alle taglie</h2>
+        <div class="size-guide">
+            <div class="size-table">
+                <table aria-label="Tabella taglie">
+                    <thead>
+                    <tr><th>Taglia</th><th>Torace (cm) — media indicativa</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>S</td><td>89–95</td></tr>
+                    <tr><td>M</td><td>96–101</td></tr>
+                    <tr><td>L</td><td>101–107</td></tr>
+                    <tr><td>XL</td><td>107–114</td></tr>
+                    <tr><td>XXL</td><td>114–121</td></tr>
+                    <tr><td>XXXL</td><td>122–129</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:.5rem;font-size:.9rem;color:#555">* Medie calcolate da tabelle Nike, adidas, Macron, Joma, Erreà; diversi marchi vestono <strong>slim</strong>. Se sei tra due taglie, scegli la più grande. Vestibilità prevista: <strong>[regular\/slim]</strong>.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
-        <h2 class="section-title">Pronto a Iniziare?</h2>
-        <p>Scarica la brochure completa e contattaci per un incontro dedicato.</p>
-        <div style="text-align:center; margin-top:1rem;">
-            <a class="cta-btn"
-               href="https://github.com/LavorateCalcio/lavorate-calcio/releases/download/v1.0/LC_MARKETING_PROPOSAL_25-26.pdf"
-               download="LC_MARKETING_PROPOSAL_25-26.pdf">
-                Scarica Brochure Completa
-            </a>
+    <!-- COME FUNZIONA -->
+    <section class="section">
+        <h2 class="section-title">Come funziona</h2>
+        <div class="steps">
+            <div class="step"><div class="num">1</div><p>Compila il modulo qui sotto.</p></div>
+            <div class="step"><div class="num">2</div><p>Ricevi email con <strong>codice</strong> e istruzioni.</p></div>
+            <div class="step"><div class="num">3</div><p>Porta <strong>€15</strong> al campo entro 7 giorni → <strong>Conferma</strong>.</p></div>
         </div>
-    </div>
+    </section>
 
-    <div class="section contact-section">
-        <h2 class="section-title">Contattaci</h2>
-        <form class="contact-form" action="https://formspree.io/f/xrbkzqzb" method="POST">
-            <input type="hidden" name="_subject" value="Richiesta Sponsorizzazione ASD Lavorate Calcio">
+    <!-- FORM PRE-ADESIONE -->
+    <section class="section contact-section" id="preordine">
+        <h2 class="section-title">Pre-Order</h2>
+        <form class="contact-form" action="https://formspree.io/f/mgvnvjzg" method="POST">
+            <input type="hidden" name="_subject" value="Pre-Order Home Kit 25/26">
             <input type="hidden" name="_captcha" value="false">
-            <input name="name" type="text" placeholder="Il tuo nome" required>
-            <input name="email" type="email" placeholder="La tua email" required>
-            <textarea name="message" placeholder="Il tuo messaggio" required></textarea>
-            <button type="submit" class="mail-btn">Invia Messaggio</button>
+            <input type="hidden" name="preorder_code" value="">
+
+            <input name="name" type="text" placeholder="Nome e cognome" required>
+            <input name="email" type="email" placeholder="Email" required>
+            <input name="phone" type="text" placeholder="Telefono (opzionale)">
+
+            <select name="size" required>
+                <option value="">Seleziona la taglia</option>
+                <option>S</option><option>M</option><option>L</option>
+                <option>XL</option><option>XXL</option><option>XXXL</option>
+            </select>
+
+            <textarea name="address" placeholder="Indirizzo (opzionale)"></textarea>
+            <textarea name="notes" placeholder="Note (opzionale)"></textarea>
+
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="company" style="display:none">
+
+            <button type="submit" class="mail-btn">Invia pre-adesione</button>
+            <p class="small-note">Dopo l’invio riceverai una email con le istruzioni per versare l’acconto in sede.</p>
         </form>
-    </div>
+    </section>
+
+    <!-- FAQ / NOTE -->
+    <section class="section">
+        <h2 class="section-title">FAQ</h2>
+        <ul style="max-width:900px;margin:0 auto;list-style:disc;padding-left:1.25rem;line-height:1.7">
+            <li><strong>Posso ordinare più maglie?</strong> Fai una richiesta per ogni maglia.</li>
+            <li><strong>Entro quando portare l’acconto?</strong> Entro 7 giorni dalla richiesta (scadenza indicata nell’email).</li>
+            <li><strong>È prevista spedizione?</strong> No, ritiro al campo.</li>
+            <li><strong>Posso cambiare taglia?</strong> Possibile fino al versamento dell’acconto; dopo la conferma potrebbe non essere garantito.</li>
+            <li><strong>Se la produzione non parte?</strong> L’acconto viene rimborsato.</li>
+        </ul>
+    </section>
 </main>
 
-<!-- Modal Lightbox con Swiper interno -->
-<div class="modal" id="modal">
+<!-- MODAL LIGHTBOX -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Galleria a schermo intero">
     <div class="modal-content" id="modalContent">
-        <button class="modal-close" id="modalClose">&times;</button>
+        <button class="modal-close" id="modalClose" aria-label="Chiudi">&times;</button>
         <div class="swiper modal-swiper">
             <div class="swiper-wrapper"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev" aria-label="Indietro"></div>
+            <div class="swiper-button-next" aria-label="Avanti"></div>
             <div class="swiper-pagination"></div>
         </div>
     </div>
 </div>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
     <div class="social-links">
-        <a href="https://www.instagram.com/asdlavoratecalcio/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@lavoratecalcio" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.youtube.com/channel/UC-Prf4xBKU1fxwMhvLaQqtg" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.facebook.com/LavorateCalcioASD" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/asdlavoratecalcio/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@lavoratecalcio" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/channel/UC-Prf4xBKU1fxwMhvLaQqtg" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/LavorateCalcioASD" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
     </div>
-    <p>&copy; 2025 ASD Lavorate Calcio</p>
+    <p style="margin-top:.5rem">&copy; 2025 ASD Lavorate Calcio</p>
 </footer>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
-    // 1) Popolo il carosello principale (main-swiper)
+    // === GALLERIA: elenca qui i file immagine disponibili (cartella stessa della pagina) ===
+    const gallery = [
+      { src: 'kit-01.jpg', alt: 'Maglia Home 25/26 – scatto 1' },
+      { src: 'kit-02.jpg', alt: 'Maglia Home 25/26 – scatto 2' },
+      { src: 'kit-03.jpg', alt: 'Maglia Home 25/26 – scatto 3' },
+      { src: 'kit-04.jpg', alt: 'Maglia Home 25/26 – scatto 4' },
+      { src: 'kit-05.jpg', alt: 'Maglia Home 25/26 – scatto 5' },
+      { src: 'kit-06.jpg', alt: 'Maglia Home 25/26 – scatto 6' },
+      { src: 'kit-07.jpg', alt: 'Maglia Home 25/26 – scatto 7' },
+      { src: 'kit-08.jpg', alt: 'Maglia Home 25/26 – scatto 8' },
+      { src: 'kit-09.jpg', alt: 'Maglia Home 25/26 – scatto 9' },
+      { src: 'kit-10.jpg', alt: 'Maglia Home 25/26 – scatto 10' }
+    ];
+
+    // Popola lo slider principale
     const mainWrapper = document.querySelector('.main-swiper .swiper-wrapper');
-    for (let i = 1; i <= 18; i++) {
+    gallery.forEach((img, idx) => {
       const slide = document.createElement('div');
-      slide.classList.add('swiper-slide');
-      const img = document.createElement('img');
-      img.src = `page-${i}.png`;
-      img.alt = `Pagina ${i}`;
-      slide.appendChild(img);
+      slide.className = 'swiper-slide';
+      const el = document.createElement('img');
+      el.src = img.src;
+      el.alt = img.alt;
+      el.loading = 'lazy';
+      slide.appendChild(el);
       mainWrapper.appendChild(slide);
+      slide.addEventListener('click', () => openModal(idx));
+    });
 
-      // All'apertura del modal, richiamo quell'indice
-      slide.addEventListener('click', () => {
-        openModal(i - 1);
-      });
-    }
-
-    // Inizializzo lo Swiper principale
+    // Inizializza lo Swiper principale
     const mainSwiper = new Swiper('.main-swiper', {
       slidesPerView: 3,
       spaceBetween: 10,
@@ -450,30 +288,26 @@
         nextEl: '.main-swiper .swiper-button-next',
         prevEl: '.main-swiper .swiper-button-prev'
       },
-      pagination: {
-        el: '.main-swiper .swiper-pagination',
-        clickable: true
-      },
+      pagination: { el: '.main-swiper .swiper-pagination', clickable: true },
       breakpoints: {
-        0:   { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 5 },
+        0:   { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 6 },
         576: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 8 },
         992: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 10 }
       }
     });
 
-    // 2) Popolo lo Swiper interno (modal-swiper) con le 18 stesse immagini
+    // Popola il lightbox
     const modalWrapper = document.querySelector('.modal-swiper .swiper-wrapper');
-    for (let i = 1; i <= 18; i++) {
-      const mSlide = document.createElement('div');
-      mSlide.classList.add('swiper-slide');
-      const mImg = document.createElement('img');
-      mImg.src = `page-${i}.png`;
-      mImg.alt = `Pagina ${i}`;
-      mSlide.appendChild(mImg);
-      modalWrapper.appendChild(mSlide);
-    }
+    gallery.forEach((img) => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+      const el = document.createElement('img');
+      el.src = img.src;
+      el.alt = img.alt;
+      slide.appendChild(el);
+      modalWrapper.appendChild(slide);
+    });
 
-    // Inizializzo lo Swiper interno (lightbox)
     const modalSwiper = new Swiper('.modal-swiper', {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -481,30 +315,32 @@
         nextEl: '.modal-swiper .swiper-button-next',
         prevEl: '.modal-swiper .swiper-button-prev'
       },
-      pagination: {
-        el: '.modal-swiper .swiper-pagination',
-        clickable: true
-      }
+      pagination: { el: '.modal-swiper .swiper-pagination', clickable: true }
     });
 
-    // 3) Funzione che apre il modal e porta lo Swiper interno sull'indice corretto
-    function openModal(index) {
-      document.getElementById('modal').classList.add('open');
-      modalSwiper.slideTo(index, 0);
-    }
-
-    // 4) Chiusura del modal al click sulla X o fuori dal contenuto
+    // Lightbox controls
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modalClose');
     const modalContent = document.getElementById('modalContent');
-    modalClose.addEventListener('click', () => {
-      modal.classList.remove('open');
-    });
-    modal.addEventListener('click', (e) => {
-      if (!modalContent.contains(e.target)) {
-        modal.classList.remove('open');
+    function openModal(index) { modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); setTimeout(() => { modalSwiper.update(); modalSwiper.slideTo(index, 0); }, 0); }
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(!modalContent.contains(e.target)) closeModal(); });
+
+    // === Genera Codice pre-adesione al submit ===
+    (function(){
+      const form = document.querySelector('.contact-form');
+      if(!form) return;
+      let hidden = form.querySelector('input[name="preorder_code"]');
+      if(!hidden){ hidden = document.createElement('input'); hidden.type='hidden'; hidden.name='preorder_code'; form.appendChild(hidden); }
+      function genCode(){
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let r='';
+        for(let i=0;i<6;i++) r += chars[Math.floor(Math.random()*chars.length)];
+        return 'LC25-' + r;
       }
-    });
+      form.addEventListener('submit', function(){ if(!hidden.value) hidden.value = genCode(); });
+    })();
 </script>
 </body>
 </html>
