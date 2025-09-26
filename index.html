@@ -118,9 +118,9 @@
 <header>
     <div class="inner">
         <img src="logo.png" alt="Logo ASD Lavorate Calcio" class="logo" loading="lazy">
-        <h1>Home Shirt 25/26</h1>
+        <h1>Maglia Home 25/26 – Preordine</h1>
         <p class="lead">Compila il modulo, ricevi il codice e <strong>conferma con €15</strong> in sede entro 7 giorni.</p>
-        <a href="#preordine" class="cta-primary">Invia Pre-Order</a>
+        <a href="#preordine" class="cta-primary">Invia pre-adesione</a>
     </div>
 </header>
 
@@ -205,7 +205,7 @@
             <!-- Honeypot anti-spam -->
             <input type="text" name="company" style="display:none">
 
-            <button type="submit" class="mail-btn">Invia pre-adesione</button>
+            <button type="submit" class="mail-btn">Invia Pre-Order</button>
             <p class="small-note">Dopo l’invio riceverai una email con le istruzioni per versare l’acconto in sede.</p>
         </form>
     </section>
@@ -249,6 +249,12 @@
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // TODO: sostituisci con la tua Public Key di EmailJS
+    emailjs.init("WzaBmb7eu8lknOCcU");
+</script>
 <script>
     // === GALLERIA: elenca qui i file immagine disponibili (cartella stessa della pagina) ===
     const gallery = [
@@ -332,15 +338,61 @@
       const form = document.querySelector('.contact-form');
       if(!form) return;
       let hidden = form.querySelector('input[name="preorder_code"]');
-      if(!hidden){ hidden = document.createElement('input'); hidden.type='hidden'; hidden.name='preorder_code'; form.appendChild(hidden); }
-      function genCode(){
-        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-        let r='';
-        for(let i=0;i<6;i++) r += chars[Math.floor(Math.random()*chars.length)];
-        return 'LC25-' + r;
-      }
-      form.addEventListener('submit', function(){ if(!hidden.value) hidden.value = genCode(); });
-    })();
+  if (!hidden) {
+    hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = 'preorder_code';
+    form.appendChild(hidden);
+  }
+
+  function genCode(){
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let r=''; for(let i=0;i<6;i++) r += chars[Math.floor(Math.random()*chars.length)];
+    return 'LC25-' + r;
+  }
+  function formatDeadline(days){
+    const d = new Date(); d.setDate(d.getDate()+days);
+    return d.toLocaleDateString('it-IT'); // dd/mm/yyyy
+  }
+
+  form.addEventListener('submit', async function(e){
+    // honeypot anti-spam: se il campo nascosto è pieno, non inviare
+    if (form.company && form.company.value) return;
+
+    e.preventDefault();
+
+    // genera codice se manca
+    if (!hidden.value) hidden.value = genCode();
+
+    // disabilita bottone per evitare doppi invii
+    const btn = form.querySelector('.mail-btn');
+    const btnOriginal = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Invio...'; }
+
+    // parametri per il template EmailJS
+    const params = {
+      to_email: form.email.value,
+      to_name: form.name.value,
+      preorder_code: hidden.value,
+      size: form.size.value,
+      deadline: formatDeadline(7)
+    };
+
+    try {
+      await emailjs.send('service_1m8pq2j', 'template_vy4az4t', params);
+    } catch (err) {
+      console.warn('EmailJS error:', err);
+      // opzionale: mostrare un messaggio all'utente
+      // alert("Richiesta inviata. Nota: l'email automatica non è partita, ti contatteremo a breve.");
+    }
+
+    // invia i dati a Formspree normalmente
+    form.submit();
+
+    // ripristina il bottone dopo un attimo (non strettamente necessario)
+    setTimeout(()=>{ if (btn) { btn.disabled = false; btn.textContent = btnOriginal || 'Invia Pre-Order'; } }, 2000);
+  });
+})();
 </script>
 </body>
 </html>
