@@ -118,16 +118,16 @@
 <header>
     <div class="inner">
         <img src="logo.png" alt="Logo ASD Lavorate Calcio" class="logo" loading="lazy">
-        <h1>Maglia Home 25/26 – Preordine</h1>
+        <h1>Home Shirt 25/26</h1>
         <p class="lead">Compila il modulo, ricevi il codice e <strong>conferma con €15</strong> in sede entro 7 giorni.</p>
-        <a href="#preordine" class="cta-primary">Invia pre-adesione</a>
+        <a href="#preordine" class="cta-primary">Invia Pre-Order</a>
     </div>
 </header>
 
 <main>
     <!-- GALLERIA -->
     <section class="section" aria-labelledby="galleria-title">
-        <h2 id="galleria-title" class="section-title">Galleria kit</h2>
+        <h2 id="galleria-title" class="section-title">Galleria Kit</h2>
         <div class="swiper main-swiper">
             <div class="swiper-wrapper"></div>
             <div class="swiper-button-prev" aria-label="Indietro"></div>
@@ -197,6 +197,12 @@
                 <option value="">Seleziona la taglia</option>
                 <option>S</option><option>M</option><option>L</option>
                 <option>XL</option><option>XXL</option><option>XXXL</option>
+            </select>
+
+            <select name="color" required>
+                <option value="">Seleziona il colore</option>
+                <option>Verde</option>
+                <option>Nero</option>
             </select>
 
             <textarea name="address" placeholder="Indirizzo (opzionale)"></textarea>
@@ -375,6 +381,7 @@
       to_name: form.name.value,
       preorder_code: hidden.value,
       size: form.size.value,
+      color: form.color.value,
       deadline: formatDeadline(7)
     };
 
